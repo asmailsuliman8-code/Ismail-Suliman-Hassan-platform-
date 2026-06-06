@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة إسماعيل الذكية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<header>
+    <h1>📚 مكتبة إسماعيل الذكية</h1>
+    <p>نظام كتب المرحلة الثانوية</p>
+
+    <input type="text" id="search" placeholder="ابحث عن كتاب...">
+</header>
+
+<main>
+    <h2>📖 الكتب المتاحة</h2>
+    <div id="booksContainer" class="books"></div>
+</main>
+
+<!-- عارض PDF -->
+<div id="viewer" class="viewer">
+    <div class="viewer-box">
+        <span class="close" onclick="closeBook()">❌ إغلاق</span>
+        <iframe id="pdfFrame"></iframe>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 مكتبة إسماعيل الذكية</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
