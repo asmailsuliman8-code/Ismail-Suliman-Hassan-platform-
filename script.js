@@ -1,86 +1,78 @@
-const repo =
-"asmailsuliman8-code/Ismail-Suliman-Hassan-platform-";
+const books = [
+"math1.pdf",
+"math2.pdf",
+"math3.pdf",
+"physics1.pdf",
+"physics3.pdf",
+"chemistry1.pdf",
+"chemistry2.pdf",
+"chemistry3.pdf",
+"biology1.pdf",
+"biology2.pdf",
+"english2.pdf",
+"english3.pdf",
+"computer2.pdf",
+"computer3.pdf",
+"arabic1.pdf",
+"arabic3.pdf",
+"islam1.pdf",
+"islam3.pdf",
+"history1.pdf",
+"history3.pdf",
+"geography1.pdf",
+"geography3.pdf"
+];
 
-async function loadBooks(){
+const container = document.getElementById("booksContainer");
 
-    const url =
-    `https://api.github.com/repos/${repo}/contents`;
+// عرض الكتب
+function loadBooks(){
 
-    const response = await fetch(url);
+    books.forEach(file => {
 
-    const files = await response.json();
+        const card = document.createElement("div");
+        card.className = "card";
 
-    const container =
-    document.getElementById("booksContainer");
-
-    files.forEach(file=>{
-
-        if(file.name.endsWith(".pdf")){
-
-            const card =
-            document.createElement("div");
-
-            card.className = "card";
-
-            card.innerHTML = `
-                <h3>${formatName(file.name)}</h3>
-
-                <button
-                onclick="openBook('${file.download_url}')">
+        card.innerHTML = `
+            <h3>${file.replace(".pdf","")}</h3>
+            <button onclick="openBook('${file}')">
                 فتح الكتاب
-                </button>
-            `;
+            </button>
+        `;
 
-            container.appendChild(card);
-        }
+        container.appendChild(card);
 
     });
 
 }
 
-function formatName(name){
+// فتح الكتاب
+function openBook(file){
 
-    return name
-    .replace(".pdf","")
-    .replace(/-/g," ")
-    .replace(/_/g," ");
+    document.getElementById("viewer").style.display = "flex";
 
-}
-
-function openBook(url){
-
-    document.getElementById("viewer")
-    .style.display = "flex";
-
-    document.getElementById("pdfFrame")
-    .src = url;
+    document.getElementById("pdfFrame").src = file;
 
 }
 
+// إغلاق
 function closeBook(){
 
-    document.getElementById("viewer")
-    .style.display = "none";
+    document.getElementById("viewer").style.display = "none";
 
-    document.getElementById("pdfFrame")
-    .src = "";
+    document.getElementById("pdfFrame").src = "";
 
 }
 
-document
-.getElementById("search")
-.addEventListener("keyup",function(){
+// بحث
+document.getElementById("search").addEventListener("input", function(){
 
-    const value =
-    this.value.toLowerCase();
+    let value = this.value.toLowerCase();
 
-    document
-    .querySelectorAll(".card")
-    .forEach(card=>{
+    document.querySelectorAll(".card").forEach(card => {
 
         card.style.display =
-        card.innerText.toLowerCase()
-        .includes(value)
+        card.innerText.toLowerCase().includes(value)
         ? "block"
         : "none";
 
@@ -88,14 +80,5 @@ document
 
 });
 
-function scrollToBooks(){
-
-    document
-    .getElementById("booksContainer")
-    .scrollIntoView({
-        behavior:"smooth"
-    });
-
-}
-
+// تشغيل
 loadBooks();
