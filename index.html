@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>منصة إسماعيل التعليمية</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+
+    <img src="ismail.jpg" class="profile-img" alt="صورة إسماعيل">
+
+    <h1>منصة إسماعيل التعليمية</h1>
+
+    <p>كتب المرحلة الثانوية - نظام بسيط وسريع</p>
+
+    <input type="text" id="search" placeholder="ابحث عن كتاب...">
+
+</header>
+
+<main>
+
+    <h2 style="text-align:center;">📚 الكتب المتاحة</h2>
+
+    <div id="container" class="books"></div>
+
+</main>
+
+<!-- عارض PDF -->
+<div id="viewer" class="viewer">
+
+    <div class="viewer-box">
+
+        <button onclick="closeBook()">✖ إغلاق</button>
+
+        <iframe id="pdf"></iframe>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
